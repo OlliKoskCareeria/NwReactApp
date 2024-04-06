@@ -3,26 +3,29 @@ import React, {useState, useEffect} from 'react'
 
 const Posts = () => {
 
-// Komponentin tilan määritys
+// Komptilan määritys
 const [posts, setPosts] = useState([])
+const [showPosts, setShowPosts] = useState(false)
 
 useEffect(() => {
   fetch("https://jsonplaceholder.typicode.com/posts")
-  .then(res => res.json()) //muutetaan json data javascriptiksi
+  .then(res => res.json()) //to javascript
   .then(oliot => setPosts(oliot))
 },[]
 )
 
   return (
     <>
-        <h2>Posts from typicode</h2>
+    <h2 onClick={() => setShowPosts(!showPosts)}>Posts from typicode</h2>
+        
 
         {
-          posts && posts.map(p =>
+          showPosts && posts && posts.map(p =>
 
             <div className='posts' key={p.id}>
-
-            <p>{p.title}</p>
+              <h3>####</h3>
+              <h3>{p.title}</h3>
+            <p>{p.body}</p>
             
             </div>
             )

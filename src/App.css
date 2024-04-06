@@ -40,3 +40,32 @@
 .read-the-docs {
   color: #888;
 }
+
+.posts{
+  background-color: bisque;
+  border-color: black;
+  border-width: 1px;
+  max-width: 80%;
+  border-style: solid;
+  margin-bottom: 2%;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.customerDetails {
+  background-color: violet;
+  border-style: dashed;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 50px;
+  border-radius: 30px;
+  padding-left: 10%;
+}
+
+.nappi {
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 26px;
+  background-color: violet;
+  color: black;
+}

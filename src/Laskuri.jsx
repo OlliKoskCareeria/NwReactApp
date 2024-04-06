@@ -19,13 +19,13 @@ const Laskuri = () =>{
       <h1>Hello From React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          add {count}
         </button>
         <button onClick={() => setCount((count) => count - 1)}>
-          count is {count}
+          detuct {count}
         </button>
         <button onClick={() => setCount((count) => 0)}>
-          count is {count}
+          reset {count}
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
