@@ -15,7 +15,7 @@ const App = () => {
   const [message, setMessage] = useState('')
   const [isPositive, setIsPositive] = useState(false)
   
-const [showPosts, setPosts] = useState(false)
+  // const [showPosts, setPosts] = useState(false)
 
 const huomio = () => {
   alert("Huomio!")
