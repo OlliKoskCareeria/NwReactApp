@@ -69,7 +69,7 @@ const deleteUser = (user) => {
         </h4>
 
        {showDetails && <div className="userDetails">
-                <h3>{user.userName}</h3>
+                
                 <button className="nappi"onClick={() => deleteUser(user)}>Delete</button>
                 <button className="nappi"onClick={() => editLogins(user)}>Edit</button>
                 
@@ -82,7 +82,7 @@ const deleteUser = (user) => {
                             <th>LastName</th>
                             <th>Email</th>
                             <th>AccesLevelId</th>
-                            <th>pword</th>
+                            {/* <th>pword</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -93,7 +93,7 @@ const deleteUser = (user) => {
                             <td>{user.lastName}</td>
                             <td>{user.email}</td>
                             <td>{user.accesLevelId}</td>
-                            <td>{user.passWord}</td>
+                            {/* <td>{user.passWord}</td> */}
                         </tr>
                     </tbody>
                 </table></div>}

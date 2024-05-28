@@ -1,5 +1,5 @@
 import './App.css'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import LoginService from './services/User'
 import md5 from 'md5'
 
@@ -14,8 +14,24 @@ const [newEmail, setNewEmail] = useState('')
 const [newAccesslevelId, setNewAccesslevelId] = useState(2)
 const [newUsername, setNewUsername] = useState('')
 const [newPassword, setNewPassword] = useState('')
-
-
+const [confirmPassword, setConfirmPassword] = useState('')
+const [passwordMessage, setPasswordMessage] = useState('')
+const [passwordMessageColor, setPasswordMessageColor] = useState('')
+// tämä lauseke vertaa salasana kenttien arvoja ja asettaa viestin sen perusteella
+useEffect(() =>{
+  if(newPassword && confirmPassword){
+    if(newPassword === confirmPassword){
+      setPasswordMessage('Passwords match');
+      setPasswordMessageColor('green');
+    } else {
+      setPasswordMessage('passwords no not match');
+      setPasswordMessageColor('red')
+    }
+  }else {
+    setPasswordMessage('');
+    setPasswordMessageColor('');
+  } 
+},[newPassword, confirmPassword]);
 // onSubmit tapahtumankäsittelijä funktio
 const handleSubmit = (event) => {
       event.preventDefault()
@@ -85,6 +101,14 @@ const handleSubmit = (event) => {
             <div>
                 <input type="password" value={newPassword} placeholder="Password"
                     onChange={({ target }) => setNewPassword(target.value)} />
+            </div>
+            <div>
+                <input type="password" value={confirmPassword} placeholder="Confirm Password"
+                    onChange={({ target }) => setConfirmPassword(target.value)} />
+            </div>
+            {/* tämä label näyttää viestin sen perusteella ovatko salasanat yhteneväiset */}
+            <div>
+              <label style={{color: passwordMessageColor}}>{passwordMessage}</label>
             </div>
             
          <input type='submit' value='save' />

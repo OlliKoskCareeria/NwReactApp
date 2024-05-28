@@ -9,7 +9,7 @@ const [newLoginid, setNewLoginid] = useState(muokattavaLogin.loginId)
 const [newFirstname, setNewFirstname] = useState(muokattavaLogin.firstName)
 const [newLastname, setNewLastname] = useState(muokattavaLogin.lastName)
 const [newEmail, setNewEmail] = useState(muokattavaLogin.email)
-const [newAccesslevelId, setNewAccesslevelId] = useState(muokattavaLogin.accessLevelId)
+const [newAccesslevelId, setNewAccesslevelId] = useState(muokattavaLogin.accesLevelId)
 const [newUsername, setNewUsername] = useState(muokattavaLogin.userName)
 const [newPassword, setNewPassword] = useState(muokattavaLogin.passWord)
     
@@ -23,7 +23,7 @@ const handleSubmit = (event) => {
         firstName: newFirstname,
         lastName: newLastname,
         email: newEmail,
-        accesLevelId: newAccesslevelId,
+        accesLevelId: parseInt(newAccesslevelId),
         userName: newUsername,
         passWord: newPassword
         

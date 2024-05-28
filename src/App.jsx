@@ -4,6 +4,7 @@ import Laskuri from './Laskuri'
 import Posts from './Posts'
 import CustomerList from './CustomerList'
 import LoginList from './LoginList'
+import ProductList from './ProductList'
 import Message from './Message'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -20,16 +21,25 @@ const [showMessage, setShowMessage] = useState('')
 const [showLaskuri, setShowLaskuri] = useState(false)
 const [showPosts, setPosts] = useState(false)
 const [loggedInUser, setLoggedInUser] = useState('')
+const[loggedAccessLevel, setLoggedAccessLevel] = useState(false)
 const [loginLevel, setLoginLevel] = useState('')
 const logout = () => {
   localStorage.clear()
   setLoggedInUser('')
+  setLoggedAccessLevel(false)
 }
 // App komponentin tila
 useEffect(() => {
   let storedUser = localStorage.getItem("username")
   if (storedUser !== null) {
     setLoggedInUser(storedUser)
+  }
+},[])
+
+useEffect(() => {
+  let storedAccessLevel = localStorage.getItem("accesslevelId")
+  if (storedAccessLevel == 2) {
+    setLoggedAccessLevel(true)
   }
 },[])
 
@@ -61,7 +71,8 @@ useEffect(() => {
         <Nav className="mr-auto">
             <Nav.Link href='/customers'>Customers</Nav.Link>
             <Nav.Link href='/posts'>Some highlights</Nav.Link>
-            <Nav.Link href='/logins'>Users</Nav.Link>
+            { loggedAccessLevel && <Nav.Link href='/logins'>Users</Nav.Link>}
+            <Nav.Link href='/products'>Products</Nav.Link>
             <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
             <button onClick={() => logout()}>Logout</button>
         </Nav>
@@ -79,6 +90,11 @@ useEffect(() => {
 
       <Route path="/logins"
       element={<LoginList setMessage={setMessage} setIsPositive={setIsPositive} 
+      setShowMessage={setShowMessage} />}>
+      </Route>
+
+      <Route path="/products"
+      element={<ProductList setMessage={setMessage} setIsPositive={setIsPositive} 
       setShowMessage={setShowMessage} />}>
       </Route>
       

@@ -33,7 +33,23 @@ const update = (object) => {
     const config = {
         headers: { Authorization: token },
     }
-    return axios.put(`${baseUrl}/${object.ProductId}`, object, config)
+    return axios.put(`${baseUrl}/${object.productId}`, object, config)
 }
 
-export default { getAll, create, remove, update, setToken }
+const fetchCategories = () =>{
+    const config = {
+        headers: { Authorization: token },
+    }
+    return axios.get(`${baseUrl}/categories`,config)
+
+}
+
+const fetchSuppliers = () =>{
+    const config = {
+        headers: { Authorization: token },
+    }
+    return axios.get(`${baseUrl}/suppliers`,config)
+
+}
+
+export default { getAll, create, remove, update, setToken, fetchCategories, fetchSuppliers }
